@@ -344,43 +344,62 @@ img {
   object-position: center 42%;
 }
 
-.site-hero__videoctrl {
+.site-hero__watch {
   flex: 0 0 auto;
-  width: 44px;
-  height: 44px;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  background: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  font-family: inherit;
+  color: var(--ink);
+  text-align: left;
+}
+
+.site-hero__watch-icon {
+  flex: 0 0 auto;
+  width: 46px;
+  height: 46px;
   border-radius: 50%;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  background: rgba(10, 9, 6, 0.45);
-  border: 1px solid rgba(244, 241, 229, 0.18);
+  background: rgba(10, 9, 6, 0.5);
+  border: 1px solid rgba(244, 241, 229, 0.22);
   backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(6px);
   color: var(--ink);
-  cursor: pointer;
-  font-family: inherit;
   transition: border-color 0.25s ease, background 0.25s ease, transform 0.25s ease;
 }
 
-.site-hero__videoctrl:hover {
+.site-hero__watch:hover .site-hero__watch-icon {
   border-color: rgba(201, 160, 91, 0.5);
-  background: rgba(10, 9, 6, 0.6);
-  transform: translateY(-2px);
+  background: rgba(10, 9, 6, 0.68);
+  transform: scale(1.06);
 }
 
-.site-hero__videoctrl:active {
-  transform: translateY(0);
+.site-hero__watch:active .site-hero__watch-icon {
+  transform: scale(0.97);
 }
 
-.site-hero__videoctrl .icon-play {
+.site-hero__watch-label {
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.35;
+  color: var(--ink-dim);
+}
+
+.site-hero__watch .icon-play {
   display: none;
 }
 
-.site-hero__videoctrl.is-paused .icon-pause {
+.site-hero__watch.is-paused .icon-pause {
   display: none;
 }
 
-.site-hero__videoctrl.is-paused .icon-play {
+.site-hero__watch.is-paused .icon-play {
   display: block;
 }
 
@@ -409,6 +428,23 @@ img {
   max-width: 560px;
 }
 
+.site-hero__eyebrow {
+  color: var(--gold-soft);
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
+}
+
+.site-hero__eyebrow .eyebrow-dot {
+  background: var(--gold-soft);
+  box-shadow: 0 0 0 3px rgba(226, 189, 130, 0.2);
+}
+
+.site-hero__eyebrow-line {
+  flex: 1 1 auto;
+  max-width: 60px;
+  height: 1px;
+  background: linear-gradient(90deg, var(--gold-soft), rgba(226, 189, 130, 0));
+}
+
 .site-hero__title {
   font-family: var(--serif);
   font-weight: 600;
@@ -418,6 +454,16 @@ img {
   color: var(--ink);
   text-wrap: balance;
   text-shadow: 0 2px 6px rgba(0, 0, 0, 0.7), 0 6px 26px rgba(0, 0, 0, 0.6);
+}
+
+.site-hero__title-gold {
+  background: linear-gradient(180deg, #f8ecc9 0%, #eccb85 35%, #d3a962 68%, #a97f42 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  text-shadow: none;
+  filter: drop-shadow(0 4px 18px rgba(0, 0, 0, 0.45));
 }
 
 .site-hero__lede {
@@ -437,12 +483,66 @@ img {
 }
 
 .site-hero__cta {
+  padding: 6px 6px 6px 24px;
+  background: linear-gradient(180deg, #f9edc9 0%, #eccb85 30%, #dba852 65%, #b8863f 100%);
+  color: #2a1c08;
+  box-shadow: 0 14px 28px -12px rgba(184, 134, 63, 0.6), inset 0 1px 1px rgba(255, 255, 255, 0.6);
   transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease, background 0.2s ease, border-color 0.2s ease;
 }
 
 .site-hero__cta:hover {
+  background: linear-gradient(180deg, #fbf2d9 0%, #f0d493 30%, #e0af59 65%, #bf8d44 100%);
   transform: perspective(600px) translateY(-6px) rotateX(6deg) rotateY(-5deg);
   box-shadow: 0 26px 40px -18px rgba(0, 0, 0, 0.6);
+}
+
+.site-hero__cta-arrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: #18120a;
+  color: #f4ecd8;
+  font-size: 15px;
+}
+
+.site-hero__trust {
+  margin-top: clamp(20px, 3vw, 30px);
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  row-gap: 10px;
+  padding-top: 18px;
+  border-top: 1px solid rgba(244, 241, 229, 0.14);
+}
+
+.site-hero__trust-item {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 0 14px;
+  color: var(--ink-dim);
+  font-size: 11.5px;
+  font-weight: 600;
+  white-space: nowrap;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+}
+
+.site-hero__trust-item:first-child {
+  padding-left: 0;
+}
+
+.site-hero__trust-item + .site-hero__trust-item {
+  border-left: 1px solid rgba(244, 241, 229, 0.2);
+}
+
+.site-hero__trust-item svg {
+  flex: 0 0 auto;
+  width: 17px;
+  height: 17px;
+  color: var(--gold-soft);
 }
 
 .site-hero__pager {
@@ -1980,14 +2080,32 @@ body.modal-open {
   <div class="site-hero__scrim" aria-hidden="true"></div>
 
   <div class="site-hero__content">
-    <h1 class="site-hero__title">Built to Last.<br>Made to Impress.</h1>
+    <p class="eyebrow site-hero__eyebrow"><span class="eyebrow-dot"></span>Building a Better Tomorrow<span class="site-hero__eyebrow-line"></span></p>
+    <h1 class="site-hero__title">Made to<br><span class="site-hero__title-gold">Impress.</span></h1>
     <p class="site-hero__lede">Delivering exceptional construction services with precision, reliability and unmatched craftsmanship.</p>
     <div class="site-hero__actions">
-      <a class="btn btn--solid site-hero__cta" href="contact.html"><span>Get a Quote</span><span class="arrow">&rarr;</span></a>
-      <button class="site-hero__videoctrl" id="site-hero-videoctrl" aria-label="Ndalo videon" aria-pressed="true">
-        <svg class="icon-pause" viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><rect x="6" y="5" width="4" height="14" rx="1"></rect><rect x="14" y="5" width="4" height="14" rx="1"></rect></svg>
-        <svg class="icon-play" viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"></path></svg>
+      <a class="btn btn--solid site-hero__cta" href="contact.html"><span>Get a Quote</span><span class="arrow site-hero__cta-arrow">&rarr;</span></a>
+      <button class="site-hero__watch" id="site-hero-videoctrl" aria-label="Ndalo videon" aria-pressed="true">
+        <span class="site-hero__watch-icon">
+          <svg class="icon-pause" viewBox="0 0 24 24" width="14" height="14" fill="currentColor" aria-hidden="true"><rect x="6" y="5" width="4" height="14" rx="1"></rect><rect x="14" y="5" width="4" height="14" rx="1"></rect></svg>
+          <svg class="icon-play" viewBox="0 0 24 24" width="14" height="14" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"></path></svg>
+        </span>
+        <span class="site-hero__watch-label">Watch<br>Our Work</span>
       </button>
+    </div>
+    <div class="site-hero__trust">
+      <div class="site-hero__trust-item">
+        <svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3z"></path><path d="M9 12l2 2 4-4"></path></svg>
+        <span>Quality Materials</span>
+      </div>
+      <div class="site-hero__trust-item">
+        <svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3"></circle><circle cx="17.5" cy="9.5" r="2.4"></circle><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6"></path><path d="M15.5 14.3c2.3.4 4.5 2.3 4.5 5.7"></path></svg>
+        <span>Experienced Team</span>
+      </div>
+      <div class="site-hero__trust-item">
+        <svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12a8 8 0 0 1 16 0"></path><path d="M4 12h16v3a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-3z"></path><path d="M12 8v4"></path></svg>
+        <span>On-Time Delivery</span>
+      </div>
     </div>
   </div>
 </section>
