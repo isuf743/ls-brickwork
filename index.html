@@ -6,6 +6,7 @@
 <title>LS Brickwork — Home</title>
 <meta name="description" content="LS Brickwork Ltd — brickwork, blockwork and construction specialists in Basingstoke, Hampshire. New builds, extensions and renovations built to last.">
 <link rel="icon" type="image/png" href="assets/logo.png">
+<link rel="preload" as="image" href="assets/photo-hero.jpg" fetchpriority="high">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=DM+Sans:wght@400;500;600;700;800&display=swap">
@@ -2121,8 +2122,8 @@ body.modal-open {
 
 <main>
 <section class="site-hero" id="site-hero">
-  <video class="site-hero__video" id="site-hero-video" autoplay muted loop playsinline poster="assets/photo-hero.jpg">
-    <source src="assets/hero-video.mp4" type="video/mp4">
+  <video class="site-hero__video" id="site-hero-video" muted loop playsinline preload="none" poster="assets/photo-hero.jpg">
+    <source data-src="assets/hero-video.mp4" type="video/mp4">
   </video>
   <div class="site-hero__scrim" aria-hidden="true"></div>
 
@@ -2401,9 +2402,20 @@ body.modal-open {
     ctrl.setAttribute('aria-pressed', paused ? 'false' : 'true');
   }
 
+  function startVideo() {
+    var source = video.querySelector('source[data-src]');
+    if (source) {
+      source.setAttribute('src', source.getAttribute('data-src'));
+      source.removeAttribute('data-src');
+      video.load();
+    }
+    var playPromise = video.play();
+    if (playPromise && playPromise.catch) playPromise.catch(function () {});
+  }
+
   ctrl.addEventListener('click', function () {
     if (video.paused) {
-      video.play();
+      startVideo();
     } else {
       video.pause();
     }
@@ -2412,6 +2424,13 @@ body.modal-open {
   video.addEventListener('play', updateState);
   video.addEventListener('pause', updateState);
   updateState();
+
+  // Defer fetching/playing the background video until right after the page has
+  // painted, so the poster image (the LCP element) isn't competing for bandwidth
+  // with a multi-MB video download on first load.
+  window.addEventListener('load', function () {
+    setTimeout(startVideo, 60);
+  });
 })();
 </script>
 
