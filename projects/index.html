@@ -3,9 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>LS Brickwork — Services</title>
-<meta name="description" content="Explore our full range of construction services: brickwork, blockwork, repointing, new builds, extensions, garden and boundary walls, and more.">
-<link rel="icon" type="image/png" href="assets/logo.png">
+<title>LS Brickwork — Projects</title>
+<meta name="description" content="Browse our featured projects — new builds, extensions, renovations and brickwork completed by LS Brickwork Ltd across Hampshire and the South of England.">
+<link rel="icon" type="image/png" href="/assets/logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=DM+Sans:wght@400;500;600;700;800&display=swap">
@@ -2107,145 +2107,174 @@ body.modal-open {
 </head>
 <body>
 <header class="site-header">
-  <a class="site-header__brand" href="index.html"><img src="assets/logo.png" width="240" height="163" alt="LS Brickwork Ltd"></a>
+  <a class="site-header__brand" href="/"><img src="/assets/logo.png" width="240" height="163" alt="LS Brickwork Ltd"></a>
   <nav class="site-header__nav" id="site-nav">
-    <a href="index.html">Home</a>
-    <a href="about.html">About Us</a>
-    <a href="services.html" class="is-active">Services</a>
-    <a href="projects.html">Projects</a>
-    <a href="contact.html">Contact</a>
+    <a href="/">Home</a>
+    <a href="/about/">About Us</a>
+    <a href="/services/">Services</a>
+    <a href="/projects/" class="is-active">Projects</a>
+    <a href="/contact/">Contact</a>
   </nav>
   <button class="site-header__navtoggle" id="site-navtoggle" aria-label="Hap menun" aria-expanded="false" aria-controls="site-nav">
     <span></span><span></span><span></span>
   </button>
-  <a class="btn btn--solid" href="contact.html"><span>Get a Quote</span><span class="arrow">&rarr;</span></a>
+  <a class="btn btn--solid" href="/contact/"><span>Get a Quote</span><span class="arrow">&rarr;</span></a>
 </header>
 
 <main>
 <section class="page-banner">
-  <img class="page-banner__photo" src="assets/photo-hero.webp" width="1200" height="900" alt="Completed brick home by LS Brickwork Ltd">
+  <img class="page-banner__photo" src="/assets/svc-newbuilds.webp" width="1400" height="1050" alt="Completed new build home by LS Brickwork Ltd">
   <div class="page-banner__scrim" aria-hidden="true"></div>
   <div class="page-banner__content container">
-    <p class="eyebrow"><span class="eyebrow-dot"></span>What We Do</p>
-    <h1 class="page-banner__title">Our Services</h1>
-    <p class="page-banner__lede">From a single repointed wall to a full structural build, every job is carried out with the same precision, care and craftsmanship.</p>
+    <p class="eyebrow"><span class="eyebrow-dot"></span>Our Work</p>
+    <h1 class="page-banner__title">Featured Projects</h1>
+    <p class="page-banner__lede">A selection of new builds, extensions, renovations and brickwork projects completed to the same exacting standard, from foundations to finishing touches.</p>
     <nav class="breadcrumb" aria-label="Breadcrumb">
-      <a href="index.html">Home</a><span class="sep">/</span><span>Services</span>
+      <a href="/">Home</a><span class="sep">/</span><span>Projects</span>
     </nav>
   </div>
 </section>
 
-<section class="services-full">
+<section class="projects-page">
   <div class="container">
-    <h2 class="sr-only">Our Services</h2>
-    <div class="services-full__grid">
-      <div class="service-tile" data-service="brickwork">
-        <span class="service-tile__icon"><svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="1"/><path d="M3 9.3h18M3 14.7h18M9 4v5.3M15 4v5.3M6 9.3v5.4M12 9.3v5.4M18 9.3v5.4M9 14.7V20M15 14.7V20"/></svg></span>
-        <h3>Brickwork</h3>
-        <button class="service-tile__more" type="button" data-open-service="brickwork">Learn more <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+    <div class="projects-filter" id="projects-filter">
+      <button class="projects-filter__btn is-active" type="button" data-filter="all">All Projects</button>
+      <button class="projects-filter__btn" type="button" data-filter="new-builds">New Builds</button>
+      <button class="projects-filter__btn" type="button" data-filter="extensions">Extensions</button>
+      <button class="projects-filter__btn" type="button" data-filter="renovations">Renovations</button>
+      <button class="projects-filter__btn" type="button" data-filter="stonework">Brickwork &amp; Stonework</button>
+    </div>
+
+    <h2 class="sr-only">Project Gallery</h2>
+    <div class="portfolio__grid" id="portfolio-grid">
+      <div class="project-card" data-category="new-builds">
+        <div class="project-card__photo">
+          <span class="project-card__tag">New Builds</span>
+          <img loading="lazy" decoding="async" src="/assets/svc-newbuilds.webp" width="1400" height="1050" alt="Contemporary new build home by LS Brickwork Ltd">
+        </div>
+        <div class="project-card__meta">
+          <div><h3>Contemporary New Build</h3><span>New Build Home</span></div>
+          <a class="link-arrow" href="/contact/" aria-label="Enquire about the Contemporary New Build project"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
       </div>
-      <div class="service-tile" data-service="blockwork">
-        <span class="service-tile__icon"><svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="1"/><path d="M3 12h18M9 4v16M15 4v16"/></svg></span>
-        <h3>Blockwork</h3>
-        <button class="service-tile__more" type="button" data-open-service="blockwork">Learn more <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+
+      <div class="project-card" data-category="new-builds">
+        <div class="project-card__photo">
+          <span class="project-card__tag">New Builds</span>
+          <img loading="lazy" decoding="async" src="/assets/proj-newbuild-progress.webp" width="800" height="600" alt="New build under construction with brick gable and roof trusses">
+        </div>
+        <div class="project-card__meta">
+          <div><h3>New Build Under Construction</h3><span>Structural Brickwork</span></div>
+          <a class="link-arrow" href="/contact/" aria-label="Enquire about the New Build Under Construction project"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
       </div>
-      <div class="service-tile" data-service="repointing">
-        <span class="service-tile__icon"><svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21l5-5M8 16l9-9a2 2 0 0 1 3 3l-9 9-3-3z"/></svg></span>
-        <h3>Repointing</h3>
-        <button class="service-tile__more" type="button" data-open-service="repointing">Learn more <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+
+      <div class="project-card" data-category="new-builds">
+        <div class="project-card__photo">
+          <span class="project-card__tag">New Builds</span>
+          <img loading="lazy" decoding="async" src="/assets/proj-foundations.webp" width="800" height="600" alt="Wide blockwork foundation footprint on a new development plot">
+        </div>
+        <div class="project-card__meta">
+          <div><h3>Foundations &amp; Groundwork</h3><span>New Development Plot</span></div>
+          <a class="link-arrow" href="/contact/" aria-label="Enquire about the Foundations &amp; Groundwork project"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
       </div>
-      <div class="service-tile" data-service="brick-repairs">
-        <span class="service-tile__icon"><svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94z"/></svg></span>
-        <h3>Brick Repairs</h3>
-        <button class="service-tile__more" type="button" data-open-service="brick-repairs">Learn more <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+
+      <div class="project-card" data-category="new-builds">
+        <div class="project-card__photo">
+          <span class="project-card__tag">New Builds</span>
+          <img loading="lazy" decoding="async" src="/assets/proj-dormers.webp" width="800" height="600" alt="Red brick new build home with dormer windows by LS Brickwork Ltd">
+        </div>
+        <div class="project-card__meta">
+          <div><h3>New Build with Dormer Windows</h3><span>Basingstoke New Build</span></div>
+          <a class="link-arrow" href="/contact/" aria-label="Enquire about the New Build with Dormer Windows project"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
       </div>
-      <div class="service-tile" data-service="new-builds">
-        <span class="service-tile__icon"><svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/></svg></span>
-        <h3>New Builds</h3>
-        <button class="service-tile__more" type="button" data-open-service="new-builds">Learn more <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+
+      <div class="project-card" data-category="extensions">
+        <div class="project-card__photo">
+          <span class="project-card__tag">Extensions</span>
+          <img loading="lazy" decoding="async" src="/assets/svc-extensions.webp" width="800" height="600" alt="Cotswold stone rear extension with bi-fold doors">
+        </div>
+        <div class="project-card__meta">
+          <div><h3>Rear Extension, Bi-Fold Doors</h3><span>Cotswold Stone Extension</span></div>
+          <a class="link-arrow" href="/contact/" aria-label="Enquire about the Rear Extension, Bi-Fold Doors project"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
       </div>
-      <div class="service-tile" data-service="extensions">
-        <span class="service-tile__icon"><svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12l6-5 6 5v8H3v-8z"/><path d="M15 15h6v5h-6z"/></svg></span>
-        <h3>Extensions</h3>
-        <button class="service-tile__more" type="button" data-open-service="extensions">Learn more <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+
+      <div class="project-card" data-category="renovations">
+        <div class="project-card__photo">
+          <span class="project-card__tag">Renovations</span>
+          <img loading="lazy" decoding="async" src="/assets/svc-restoration.webp" width="800" height="600" alt="Decorative arched brick lintel restoration detail">
+        </div>
+        <div class="project-card__meta">
+          <div><h3>Period Restoration Detail</h3><span>Arched Brick Lintel</span></div>
+          <a class="link-arrow" href="/contact/" aria-label="Enquire about the Period Restoration Detail project"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
       </div>
-      <div class="service-tile" data-service="garden-walls">
-        <span class="service-tile__icon"><svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20v-7h16v7H4z"/><path d="M12 13c0-2 1-3 3-3-1 2-1 3-3 3z"/><path d="M12 13c0-2-1-3-3-3 1 2 1 3 3 3z"/></svg></span>
-        <h3>Garden Walls</h3>
-        <button class="service-tile__more" type="button" data-open-service="garden-walls">Learn more <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+
+      <div class="project-card" data-category="renovations">
+        <div class="project-card__photo">
+          <span class="project-card__tag">Renovations</span>
+          <img loading="lazy" decoding="async" src="/assets/proj-archway.webp" width="800" height="600" alt="Feature archway brickwork restoration">
+        </div>
+        <div class="project-card__meta">
+          <div><h3>Feature Archway Restoration</h3><span>Period Property</span></div>
+          <a class="link-arrow" href="/contact/" aria-label="Enquire about the Feature Archway Restoration project"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
       </div>
-      <div class="service-tile" data-service="boundary-walls">
-        <span class="service-tile__icon"><svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h18"/><path d="M4 20v-8h16v8H4z"/><path d="M8 20v-4M12 20v-4M16 20v-4"/></svg></span>
-        <h3>Boundary Walls</h3>
-        <button class="service-tile__more" type="button" data-open-service="boundary-walls">Learn more <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+
+      <div class="project-card" data-category="stonework">
+        <div class="project-card__photo">
+          <span class="project-card__tag">Brickwork &amp; Stonework</span>
+          <img loading="lazy" decoding="async" src="/assets/svc-stonework.webp" width="800" height="1066" alt="Natural stone boundary wall">
+        </div>
+        <div class="project-card__meta">
+          <div><h3>Natural Stone Boundary Wall</h3><span>Cotswold Stonework</span></div>
+          <a class="link-arrow" href="/contact/" aria-label="Enquire about the Natural Stone Boundary Wall project"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
       </div>
-      <div class="service-tile" data-service="retaining-walls">
-        <span class="service-tile__icon"><svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 20h18"/><path d="M3 20v-4h4v-4h4v-4h7v12"/></svg></span>
-        <h3>Retaining Walls</h3>
-        <button class="service-tile__more" type="button" data-open-service="retaining-walls">Learn more <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+
+      <div class="project-card" data-category="stonework">
+        <div class="project-card__photo">
+          <span class="project-card__tag">Brickwork &amp; Stonework</span>
+          <img loading="lazy" decoding="async" src="/assets/proj-boundarywall.webp" width="800" height="986" alt="Brick boundary wall under construction">
+        </div>
+        <div class="project-card__meta">
+          <div><h3>Brick Boundary Wall</h3><span>Boundary &amp; Garden Walling</span></div>
+          <a class="link-arrow" href="/contact/" aria-label="Enquire about the Brick Boundary Wall project"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
       </div>
-      <div class="service-tile" data-service="chimney-repairs">
-        <span class="service-tile__icon"><svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 21V10h4v11"/><path d="M8 10V4h4v3"/><path d="M15 9c1-1 1-2 0-3"/><path d="M17.3 7c1-1 1-2 0-3"/><path d="M4 21h12"/></svg></span>
-        <h3>Chimney Repairs</h3>
-        <button class="service-tile__more" type="button" data-open-service="chimney-repairs">Learn more <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
-      </div>
-      <div class="service-tile" data-service="brick-stonework">
-        <span class="service-tile__icon"><svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 18h8v3H4z"/><path d="M7 13h9v4H7z"/><path d="M5 8h8v4H5z"/><path d="M9 4h7v4H9z"/></svg></span>
-        <h3>Brick &amp; Stonework</h3>
-        <button class="service-tile__more" type="button" data-open-service="brick-stonework">Learn more <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
-      </div>
-      <div class="service-tile" data-service="restoration">
-        <span class="service-tile__icon"><svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-3-6.7"/><path d="M21 3v5h-5"/></svg></span>
-        <h3>Restoration &amp; Renovation</h3>
-        <button class="service-tile__more" type="button" data-open-service="restoration">Learn more <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
-      </div>
-      <div class="service-tile" data-service="structural">
-        <span class="service-tile__icon"><svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 4h12M6 20h12M9 4v16M15 4v16"/></svg></span>
-        <h3>Structural Brickwork</h3>
-        <button class="service-tile__more" type="button" data-open-service="structural">Learn more <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
-      </div>
-      <div class="service-tile" data-service="commercial-residential">
-        <span class="service-tile__icon"><svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21V9l4-3 4 3v12"/><path d="M11 21V5h7v16"/><path d="M3 21h18"/><path d="M14 9h2M14 12h2M14 15h2"/></svg></span>
-        <h3>Commercial &amp; Residential</h3>
-        <button class="service-tile__more" type="button" data-open-service="commercial-residential">Learn more <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+
+      <div class="project-card" data-category="stonework">
+        <div class="project-card__photo">
+          <span class="project-card__tag">Brickwork &amp; Stonework</span>
+          <img loading="lazy" decoding="async" src="/assets/proj-chimney.webp" width="800" height="450" alt="Chimney stack rebuild in progress">
+        </div>
+        <div class="project-card__meta">
+          <div><h3>Chimney Stack Rebuild</h3><span>Chimney Repairs</span></div>
+          <a class="link-arrow" href="/contact/" aria-label="Enquire about the Chimney Stack Rebuild project"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
       </div>
     </div>
   </div>
 </section>
-
-<div class="service-modal" id="service-modal" aria-hidden="true" inert>
-  <div class="service-modal__backdrop" data-close-modal></div>
-  <div class="service-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="service-modal-title">
-    <button class="service-modal__close" type="button" data-close-modal aria-label="Close">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
-    </button>
-    <div class="service-modal__photo">
-      <img id="service-modal-photo" src="" alt="">
-    </div>
-    <div class="service-modal__body">
-      <span class="service-modal__icon" id="service-modal-icon"></span>
-      <h3 id="service-modal-title"></h3>
-      <p id="service-modal-desc"></p>
-      <a class="btn btn--solid" href="contact.html"><span>Get a Quote</span><span class="arrow">&rarr;</span></a>
-    </div>
-  </div>
-</div>
 
 <section class="cta-wrap">
   <div class="cta-card">
     <div class="cta-card__text">
       <p class="eyebrow eyebrow--on-light"><span class="eyebrow-dot"></span>Start Your Project</p>
-      <h2>Let&rsquo;s Build Something Exceptional.</h2>
-      <p>Have a project in mind? Tell us what you&rsquo;re planning and we&rsquo;ll help bring it to life &mdash; from a single wall to a full new build.</p>
+      <h2>Like What You See?</h2>
+      <p>Every project starts with a conversation. Tell us what you&rsquo;re planning and we&rsquo;ll help bring it to life &mdash; from a single wall to a full new build.</p>
       <ul class="cta-card__points">
         <li><span class="cta-card__check"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span>Free, no-obligation quotes</li>
         <li><span class="cta-card__check"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span>Fully insured &amp; accredited tradespeople</li>
         <li><span class="cta-card__check"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span>Local team, reliable finish every time</li>
       </ul>
-      <a class="btn btn--solid" href="contact.html"><span>Get a Quote</span><span class="arrow">&rarr;</span></a>
+      <a class="btn btn--solid" href="/contact/"><span>Get a Quote</span><span class="arrow">&rarr;</span></a>
     </div>
     <div class="cta-card__photo">
-      <img loading="lazy" decoding="async" src="assets/photo-project1.webp" width="600" height="450" alt="Completed home by LS Brickwork Ltd">
+      <img loading="lazy" decoding="async" src="/assets/about-cta.webp" width="1600" height="1200" alt="Row of completed brick townhouses built by LS Brickwork Ltd">
     </div>
   </div>
 </section>
@@ -2255,7 +2284,7 @@ body.modal-open {
   <div class="container site-footer__grid">
     <div>
       <div class="site-footer__brand">
-        <img src="assets/logo.png" width="240" height="163" alt="LS Brickwork Ltd">
+        <img src="/assets/logo.png" width="240" height="163" alt="LS Brickwork Ltd">
       </div>
       <p class="site-footer__tagline">Delivering exceptional construction services with precision, reliability and unmatched craftsmanship.</p>
     </div>
@@ -2263,21 +2292,21 @@ body.modal-open {
     <div>
       <h3>Quick Links</h3>
       <div class="site-footer__links">
-        <a href="index.html">Home</a>
-        <a href="about.html">About Us</a>
-        <a href="services.html">Services</a>
-        <a href="projects.html">Projects</a>
-        <a href="contact.html">Contact</a>
+        <a href="/">Home</a>
+        <a href="/about/">About Us</a>
+        <a href="/services/">Services</a>
+        <a href="/projects/">Projects</a>
+        <a href="/contact/">Contact</a>
       </div>
     </div>
 
     <div>
       <h3>Our Services</h3>
       <div class="site-footer__links">
-        <a href="services.html">New Builds</a>
-        <a href="services.html">Extensions</a>
-        <a href="services.html">Brickwork</a>
-        <a href="services.html">Renovations</a>
+        <a href="/services/">New Builds</a>
+        <a href="/services/">Extensions</a>
+        <a href="/services/">Brickwork</a>
+        <a href="/services/">Renovations</a>
       </div>
     </div>
 
@@ -2333,163 +2362,25 @@ body.modal-open {
 })();
 
 (function () {
-  var modal = document.getElementById('service-modal');
-  if (!modal) return;
+  var filterBar = document.getElementById('projects-filter');
+  var grid = document.getElementById('portfolio-grid');
+  if (!filterBar || !grid) return;
 
-  var photoEl = document.getElementById('service-modal-photo');
-  var iconEl = document.getElementById('service-modal-icon');
-  var titleEl = document.getElementById('service-modal-title');
-  var descEl = document.getElementById('service-modal-desc');
-  var lastFocused = null;
+  var buttons = Array.prototype.slice.call(filterBar.querySelectorAll('.projects-filter__btn'));
+  var cards = Array.prototype.slice.call(grid.querySelectorAll('.project-card'));
 
-  var PHOTOS = {
-    hero: 'assets/photo-hero.webp',
-    about: 'assets/photo-about.webp',
-    project1: 'assets/photo-project1.webp',
-    project2: 'assets/photo-project2.webp',
-    project3: 'assets/photo-project3.webp',
-    courtyard: 'assets/hero-slide2.webp',
-    row: 'assets/hero-slide3.webp',
-    rear: 'assets/hero-slide5.webp',
-    svcBrickwork: 'assets/svc-brickwork.webp',
-    svcBlockwork: 'assets/svc-blockwork.webp',
-    svcRepointing: 'assets/svc-repointing.webp',
-    svcBrickRepairs: 'assets/svc-brickrepairs.webp',
-    svcNewBuilds: 'assets/svc-newbuilds.webp',
-    svcExtensions: 'assets/svc-extensions.webp',
-    svcGardenWalls: 'assets/svc-gardenwalls.webp',
-    svcBoundaryWalls: 'assets/svc-boundarywalls.webp',
-    svcRetainingWalls: 'assets/svc-retainingwalls.webp',
-    svcChimney: 'assets/svc-chimney.webp',
-    svcStonework: 'assets/svc-stonework.webp',
-    svcRestoration: 'assets/svc-restoration.webp',
-    svcStructural: 'assets/svc-structural.webp',
-    svcCommercial: 'assets/svc-commercial.webp'
-  };
+  filterBar.addEventListener('click', function (e) {
+    var btn = e.target.closest('.projects-filter__btn');
+    if (!btn) return;
 
-  var SERVICES = {
-    'brickwork': {
-      title: 'Brickwork',
-      photo: 'svcBrickwork',
-      icon: '<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="1"/><path d="M3 9.3h18M3 14.7h18M9 4v5.3M15 4v5.3M6 9.3v5.4M12 9.3v5.4M18 9.3v5.4M9 14.7V20M15 14.7V20"/></svg>',
-      desc: 'Precision brickwork built to last, from single-skin walls to full structural elevations. We match brick bond, colour and pointing style to blend seamlessly with existing work or create a striking new finish.'
-    },
-    'blockwork': {
-      title: 'Blockwork',
-      photo: 'svcBlockwork',
-      icon: '<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="1"/><path d="M3 12h18M9 4v16M15 4v16"/></svg>',
-      desc: 'Strong, accurate blockwork for foundations, internal walls and load-bearing structures. Every course is laid level and true, giving your build a solid foundation from the ground up.'
-    },
-    'repointing': {
-      title: 'Repointing',
-      photo: 'svcRepointing',
-      icon: '<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21l5-5M8 16l9-9a2 2 0 0 1 3 3l-9 9-3-3z"/></svg>',
-      desc: 'Tired, crumbling mortar joints repaired and repointed to restore both the look and structural integrity of your walls. We match the original mortar colour and profile for a seamless finish.'
-    },
-    'brick-repairs': {
-      title: 'Brick Repairs',
-      photo: 'svcBrickRepairs',
-      icon: '<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94z"/></svg>',
-      desc: 'From cracked bricks to subsidence damage, we diagnose and repair brickwork issues properly the first time, protecting your property from further damp and structural problems.'
-    },
-    'new-builds': {
-      title: 'New Builds',
-      photo: 'svcNewBuilds',
-      icon: '<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/></svg>',
-      desc: 'Complete brickwork and blockwork packages for new build homes, delivered to exacting standards and on time, on budget every step of the way.'
-    },
-    'extensions': {
-      title: 'Extensions',
-      photo: 'svcExtensions',
-      icon: '<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12l6-5 6 5v8H3v-8z"/><path d="M15 15h6v5h-6z"/></svg>',
-      desc: 'Seamless single and double-storey extensions that match your existing brickwork perfectly, adding valuable space without compromising your home’s character.'
-    },
-    'garden-walls': {
-      title: 'Garden Walls',
-      photo: 'svcGardenWalls',
-      icon: '<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20v-7h16v7H4z"/><path d="M12 13c0-2 1-3 3-3-1 2-1 3-3 3z"/><path d="M12 13c0-2-1-3-3-3 1 2 1 3 3 3z"/></svg>',
-      desc: 'Beautifully built garden walls that add structure, privacy and kerb appeal to your outdoor space, finished to complement your home and landscaping.'
-    },
-    'boundary-walls': {
-      title: 'Boundary Walls',
-      photo: 'svcBoundaryWalls',
-      icon: '<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h18"/><path d="M4 20v-8h16v8H4z"/><path d="M8 20v-4M12 20v-4M16 20v-4"/></svg>',
-      desc: 'Durable boundary walls built to define your property line, with proper foundations and coping to withstand the elements for decades to come.'
-    },
-    'retaining-walls': {
-      title: 'Retaining Walls',
-      photo: 'svcRetainingWalls',
-      icon: '<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 20h18"/><path d="M3 20v-4h4v-4h4v-4h7v12"/></svg>',
-      desc: 'Engineered retaining walls that hold back sloped ground safely and effectively, combining structural strength with a clean, finished appearance.'
-    },
-    'chimney-repairs': {
-      title: 'Chimney Repairs',
-      photo: 'svcChimney',
-      icon: '<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 21V10h4v11"/><path d="M8 10V4h4v3"/><path d="M15 9c1-1 1-2 0-3"/><path d="M17.3 7c1-1 1-2 0-3"/><path d="M4 21h12"/></svg>',
-      desc: 'Chimney stack rebuilds, repointing and flaunching to keep your chimney safe, weatherproof and looking its best for years to come.'
-    },
-    'brick-stonework': {
-      title: 'Brick & Stonework',
-      photo: 'svcStonework',
-      icon: '<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 18h8v3H4z"/><path d="M7 13h9v4H7z"/><path d="M5 8h8v4H5z"/><path d="M9 4h7v4H9z"/></svg>',
-      desc: 'Combined brick and natural stonework for a distinctive, characterful finish, ideal for period properties, feature walls and bespoke architectural details.'
-    },
-    'restoration': {
-      title: 'Restoration & Renovation',
-      photo: 'svcRestoration',
-      icon: '<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-3-6.7"/><path d="M21 3v5h-5"/></svg>',
-      desc: 'Sensitive restoration of period brickwork and full renovation of tired properties, bringing old buildings back to life while preserving their original character.'
-    },
-    'structural': {
-      title: 'Structural Brickwork',
-      photo: 'svcStructural',
-      icon: '<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 4h12M6 20h12M9 4v16M15 4v16"/></svg>',
-      desc: 'Load-bearing brickwork and structural masonry carried out to full specification, forming the backbone of safe, long-lasting buildings.'
-    },
-    'commercial-residential': {
-      title: 'Commercial & Residential',
-      photo: 'svcCommercial',
-      icon: '<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21V9l4-3 4 3v12"/><path d="M11 21V5h7v16"/><path d="M3 21h18"/><path d="M14 9h2M14 12h2M14 15h2"/></svg>',
-      desc: 'Brickwork services for projects of every scale, from single residential extensions to larger commercial developments, all delivered with the same attention to detail.'
-    }
-  };
+    buttons.forEach(function (b) { b.classList.remove('is-active'); });
+    btn.classList.add('is-active');
 
-  function openModal(key) {
-    var data = SERVICES[key];
-    if (!data) return;
-    photoEl.src = PHOTOS[data.photo] || PHOTOS.hero;
-    photoEl.alt = data.title;
-    iconEl.innerHTML = data.icon;
-    titleEl.textContent = data.title;
-    descEl.textContent = data.desc;
-    lastFocused = document.activeElement;
-    modal.classList.add('is-open');
-    modal.setAttribute('aria-hidden', 'false');
-    modal.removeAttribute('inert');
-    document.body.classList.add('modal-open');
-    modal.querySelector('.service-modal__close').focus();
-  }
-
-  function closeModal() {
-    modal.classList.remove('is-open');
-    modal.setAttribute('aria-hidden', 'true');
-    modal.setAttribute('inert', '');
-    document.body.classList.remove('modal-open');
-    if (lastFocused) lastFocused.focus();
-  }
-
-  document.querySelectorAll('[data-open-service]').forEach(function (btn) {
-    btn.addEventListener('click', function () {
-      openModal(btn.getAttribute('data-open-service'));
+    var filter = btn.getAttribute('data-filter');
+    cards.forEach(function (card) {
+      var match = filter === 'all' || card.getAttribute('data-category') === filter;
+      card.classList.toggle('is-hidden', !match);
     });
-  });
-
-  document.querySelectorAll('[data-close-modal]').forEach(function (el) {
-    el.addEventListener('click', closeModal);
-  });
-
-  document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape' && modal.classList.contains('is-open')) closeModal();
   });
 })();
 </script>
