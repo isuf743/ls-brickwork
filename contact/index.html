@@ -7,17 +7,71 @@
 <title>LS Brickwork — Contact</title>
 <meta name="description" content="Get in touch with LS Brickwork Ltd for a free, no-obligation quote on your next brickwork, extension or new build project.">
 <link rel="canonical" href="https://lsbrickwork.com/contact/">
-<link rel="icon" type="image/png" href="/assets/logo.png">
+<link rel="icon" type="image/png" sizes="48x48" href="/assets/favicon-48.png">
+<link rel="icon" type="image/png" sizes="96x96" href="/assets/favicon-96.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
+<meta name="theme-color" content="#24332c">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="LS Brickwork Ltd">
 <meta property="og:title" content="LS Brickwork — Contact">
 <meta property="og:description" content="Get in touch with LS Brickwork Ltd for a free, no-obligation quote on your next brickwork, extension or new build project.">
 <meta property="og:url" content="https://lsbrickwork.com/contact/">
-<meta property="og:image" content="https://lsbrickwork.com/assets/photo-hero.webp">
+<meta property="og:image" content="https://lsbrickwork.com/assets/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="en_GB">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="LS Brickwork — Contact">
 <meta name="twitter:description" content="Get in touch with LS Brickwork Ltd for a free, no-obligation quote on your next brickwork, extension or new build project.">
-<meta name="twitter:image" content="https://lsbrickwork.com/assets/photo-hero.webp">
+<meta name="twitter:image" content="https://lsbrickwork.com/assets/og-image.jpg">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "ContactPage",
+      "@id": "https://lsbrickwork.com/contact/#webpage",
+      "url": "https://lsbrickwork.com/contact/",
+      "name": "LS Brickwork — Contact",
+      "about": {
+        "@id": "https://lsbrickwork.com/#business"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://lsbrickwork.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Contact",
+          "item": "https://lsbrickwork.com/contact/"
+        }
+      ]
+    },
+    {
+      "@type": "GeneralContractor",
+      "@id": "https://lsbrickwork.com/#business",
+      "name": "LS Brickwork Ltd",
+      "url": "https://lsbrickwork.com/",
+      "telephone": "+447478888682",
+      "email": "Office@lsbrickwork.co.uk",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "3 Hedgerow Close",
+        "addressLocality": "Basingstoke",
+        "postalCode": "RG23 7FT",
+        "addressCountry": "GB"
+      }
+    }
+  ]
+}
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=DM+Sans:wght@400;500;600;700;800&display=swap">
@@ -2116,6 +2170,9 @@ body.modal-open {
   }
 }
 
+.form-status { margin: 18px 0 0; font-size: 0.95rem; line-height: 1.5; color: var(--gold-dim); }
+.form-status.is-error { color: #a4442f; }
+.form-status a { color: inherit; text-decoration: underline; }
 </style>
 </head>
 <body>
@@ -2154,7 +2211,12 @@ body.modal-open {
       <div class="contact-form-card">
         <h2>Send Us a Message</h2>
         <p>Fill in the form below with a few details about your project and we&rsquo;ll be in touch to arrange a free quote.</p>
-        <form action="mailto:Office@lsbrickwork.co.uk" method="post" enctype="text/plain">
+        <form id="contact-form" action="https://formsubmit.co/Office@lsbrickwork.co.uk" method="POST">
+          <input type="hidden" name="_subject" value="New enquiry from lsbrickwork.com">
+          <input type="hidden" name="_template" value="table">
+          <input type="hidden" name="_captcha" value="false">
+          <input type="hidden" name="_next" value="https://lsbrickwork.com/contact/?sent=1">
+          <input type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
           <div class="form-row">
             <div class="form-field">
               <label for="cf-name">Full Name</label>
@@ -2195,6 +2257,7 @@ body.modal-open {
             <textarea id="cf-message" name="Message" placeholder="Tell us a little about your project&hellip;" required></textarea>
           </div>
           <button class="btn btn--solid" type="submit"><span>Send Message</span><span class="arrow">&rarr;</span></button>
+          <p class="form-status" id="contact-form-status" role="status" aria-live="polite" hidden></p>
         </form>
       </div>
 
@@ -2323,5 +2386,47 @@ body.modal-open {
 })();
 </script>
 
+<script>
+(function () {
+  var form = document.getElementById('contact-form');
+  var status = document.getElementById('contact-form-status');
+  if (!form || !status || !window.fetch) return;
+  var btn = form.querySelector('button[type="submit"]');
+  var label = btn ? btn.querySelector('span') : null;
+  var original = label ? label.textContent : '';
+  function show(msg, isError) {
+    status.innerHTML = msg;
+    status.classList.toggle('is-error', !!isError);
+    status.hidden = false;
+  }
+  if (/[?&]sent=1/.test(location.search)) {
+    show('Thank you &mdash; your message has been sent. We&rsquo;ll be in touch shortly.');
+  }
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    if (form._honey && form._honey.value) return;
+    if (btn) btn.disabled = true;
+    if (label) label.textContent = 'Sending\u2026';
+    status.hidden = true;
+    fetch('https://formsubmit.co/ajax/Office@lsbrickwork.co.uk', {
+      method: 'POST',
+      headers: { 'Accept': 'application/json' },
+      body: new FormData(form)
+    }).then(function (r) { return r.json().then(function (d) { return { ok: r.ok, d: d }; }); })
+      .then(function (res) {
+        if (!res.ok || String(res.d.success) === 'false') throw new Error('failed');
+        form.reset();
+        show('Thank you &mdash; your message has been sent. We&rsquo;ll be in touch shortly.');
+      })
+      .catch(function () {
+        show('Sorry, something went wrong. Please call us on <a href="tel:+447478888682">+44 7478 888682</a> or message us on <a href="https://wa.me/447478888682" target="_blank" rel="noopener">WhatsApp</a>.', true);
+      })
+      .then(function () {
+        if (btn) btn.disabled = false;
+        if (label) label.textContent = original;
+      });
+  });
+})();
+</script>
 </body>
 </html>
