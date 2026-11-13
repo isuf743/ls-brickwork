@@ -2149,6 +2149,17 @@ body.modal-open {
   }
 }
 
+/* Scroll-driven hero video */
+.site-hero__scrollcue { display: none; cursor: default; }
+.site-hero__scrollcue:hover { transform: none; border-color: rgba(244, 241, 229, 0.1); background: rgba(10, 9, 6, 0.4); }
+.site-hero__scrollcue .is-current { text-transform: uppercase; letter-spacing: 0.14em; font-size: 11px; }
+.hero-scroll.is-scrub { height: calc(100vh - var(--header-h, 0px) + 200vh); height: calc(100svh - var(--header-h, 0px) + 200vh); }
+.hero-scroll.is-scrub .site-hero { position: sticky; top: var(--header-h, 0px); height: calc(100vh - var(--header-h, 0px)); height: calc(100svh - var(--header-h, 0px)); min-height: 0; }
+.hero-scroll.is-scrub .site-hero__scrollcue { display: inline-flex; }
+.hero-scroll.is-scrub .site-hero__track > span { width: 0; transition: none; }
+@media (max-width: 900px) {
+  .hero-scroll.is-scrub { height: calc(100vh - var(--header-h, 0px) + 150vh); height: calc(100svh - var(--header-h, 0px) + 150vh); }
+}
 </style>
 </head>
 <body>
@@ -2168,8 +2179,9 @@ body.modal-open {
 </header>
 
 <main>
+<div class="hero-scroll" id="hero-scroll">
 <section class="site-hero" id="site-hero">
-  <video class="site-hero__video" id="site-hero-video" muted loop playsinline preload="none" poster="/assets/photo-hero-poster.webp">
+  <video class="site-hero__video" id="site-hero-video" muted loop playsinline preload="none" poster="/assets/photo-hero-poster.webp" data-src-small="/assets/hero-video-720.mp4">
     <source data-src="/assets/hero-video.mp4" type="video/mp4">
   </video>
   <div class="site-hero__scrim" aria-hidden="true"></div>
@@ -2188,8 +2200,13 @@ body.modal-open {
         <span class="site-hero__watch-label">Watch<br>Our Work</span>
       </button>
     </div>
+    <div class="site-hero__pager site-hero__scrollcue" id="site-hero-scrollcue" aria-hidden="true">
+      <span class="is-current">Scroll</span>
+      <span class="site-hero__track"><span id="site-hero-progress"></span></span>
+    </div>
   </div>
 </section>
+</div>
 
 <section class="services">
   <h2 class="sr-only">Our Services</h2>
@@ -2428,43 +2445,125 @@ body.modal-open {
 (function () {
   var video = document.getElementById('site-hero-video');
   var ctrl = document.getElementById('site-hero-videoctrl');
+  var wrap = document.getElementById('hero-scroll');
+  var hero = document.getElementById('site-hero');
+  var bar = document.getElementById('site-hero-progress');
+  var header = document.querySelector('.site-header');
   if (!video || !ctrl) return;
 
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var scrub = !!(wrap && hero && window.requestAnimationFrame && !reduce);
+
   function updateState() {
-    var paused = video.paused || video.ended;
+    var paused = scrub || video.paused || video.ended;
     ctrl.classList.toggle('is-paused', paused);
     ctrl.setAttribute('aria-pressed', paused ? 'false' : 'true');
   }
 
-  function startVideo() {
-    var source = video.querySelector('source[data-src]');
-    if (source) {
-      source.setAttribute('src', source.getAttribute('data-src'));
-      source.removeAttribute('data-src');
-      video.load();
-    }
-    var playPromise = video.play();
-    if (playPromise && playPromise.catch) playPromise.catch(function () {});
+  /* ---- Fallback: autoplaying background video (reduced motion / old browsers) ---- */
+  if (!scrub) {
+    var startVideo = function () {
+      var source = video.querySelector('source[data-src]');
+      if (source) {
+        source.setAttribute('src', source.getAttribute('data-src'));
+        source.removeAttribute('data-src');
+        video.load();
+      }
+      var p = video.play();
+      if (p && p.catch) p.catch(function () {});
+    };
+    ctrl.addEventListener('click', function () {
+      if (video.paused) startVideo(); else video.pause();
+    });
+    video.addEventListener('play', updateState);
+    video.addEventListener('pause', updateState);
+    updateState();
+    if (!reduce) window.addEventListener('load', function () { setTimeout(startVideo, 60); });
+    return;
   }
 
-  ctrl.addEventListener('click', function () {
-    if (video.paused) {
-      startVideo();
-    } else {
-      video.pause();
-    }
-  });
-
-  video.addEventListener('play', updateState);
-  video.addEventListener('pause', updateState);
+  /* ---- Scroll-driven video: the timelapse advances as you scroll ---- */
+  video.removeAttribute('loop');
+  wrap.classList.add('is-scrub');
   updateState();
 
-  // Defer fetching/playing the background video until right after the page has
-  // painted, so the poster image (the LCP element) isn't competing for bandwidth
-  // with a multi-MB video download on first load.
-  window.addEventListener('load', function () {
-    setTimeout(startVideo, 60);
+  function setHeaderHeight() {
+    var h = header ? header.getBoundingClientRect().height : 0;
+    wrap.style.setProperty('--header-h', Math.round(h) + 'px');
+  }
+  setHeaderHeight();
+  window.addEventListener('resize', setHeaderHeight);
+
+  function progress() {
+    var top = wrap.getBoundingClientRect().top + window.pageYOffset;
+    var stickTop = header ? header.getBoundingClientRect().height : 0;
+    var range = wrap.offsetHeight - hero.offsetHeight;
+    if (range <= 0) return 0;
+    var p = (window.pageYOffset + stickTop - top) / range;
+    return p < 0 ? 0 : p > 1 ? 1 : p;
+  }
+
+  var ready = false, current = 0, seeking = false;
+  function tick() {
+    var p = progress();
+    if (bar) bar.style.width = (p * 100).toFixed(2) + '%';
+    if (ready && video.duration) {
+      var target = p * (video.duration - 0.05);
+      current += (target - current) * 0.2;
+      if (Math.abs(target - current) < 0.002) current = target;
+      if (!seeking && Math.abs(video.currentTime - current) > 0.01) {
+        seeking = true;
+        video.currentTime = current;
+      }
+    }
+    requestAnimationFrame(tick);
+  }
+  video.addEventListener('seeked', function () { seeking = false; });
+  requestAnimationFrame(tick);
+
+  function useSource(url) {
+    var source = video.querySelector('source');
+    if (source) source.parentNode.removeChild(source);
+    video.addEventListener('loadeddata', function onData() {
+      video.removeEventListener('loadeddata', onData);
+      // iOS only paints frames of a video that has "played" once
+      var p = video.play();
+      if (p && p.then) p.then(function () { video.pause(); ready = true; }).catch(function () { ready = true; });
+      else { video.pause(); ready = true; }
+    });
+    video.preload = 'auto';
+    video.src = url;
+    video.load();
+  }
+
+  function loadVideo() {
+    var small = window.matchMedia('(max-width: 900px)').matches || (navigator.connection && navigator.connection.saveData);
+    var source = video.querySelector('source');
+    var url = small ? video.getAttribute('data-src-small') : (source && source.getAttribute('data-src'));
+    // Download the whole file first so scrubbing is instant in every browser
+    if (window.fetch && window.URL && URL.createObjectURL) {
+      fetch(url).then(function (r) {
+        if (!r.ok) throw new Error(r.status);
+        return r.blob();
+      }).then(function (blob) {
+        useSource(URL.createObjectURL(blob));
+      }).catch(function () { useSource(url); });
+    } else {
+      useSource(url);
+    }
+  }
+
+  // "Watch Our Work" plays the timelapse by gliding through the scroll section
+  ctrl.addEventListener('click', function () {
+    var top = wrap.getBoundingClientRect().top + window.pageYOffset;
+    var stickTop = header ? header.getBoundingClientRect().height : 0;
+    var end = top - stickTop + wrap.offsetHeight - hero.offsetHeight;
+    var atEnd = progress() > 0.98;
+    window.scrollTo({ top: atEnd ? Math.max(0, top - stickTop) : end, behavior: 'smooth' });
   });
+
+  // Fetch after first paint so the poster image (LCP) isn't competing for bandwidth
+  window.addEventListener('load', function () { setTimeout(loadVideo, 60); });
 })();
 </script>
 
